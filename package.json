@@ -1,0 +1,11 @@
+{
+  "name": "solar-forge-game-guides",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node frontend/build.mjs",
+    "dev": "npm run build && node frontend/serve.mjs",
+    "check": "npm run build && node frontend/check.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
