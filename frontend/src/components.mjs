@@ -6,6 +6,9 @@ export const sectionHeading = (eyebrow, title, detail = '') => `<div class="sect
 export function topicCard({number, title, description}) {
   return `<article class="topic-card"><span class="topic-number">${escape(number)}</span><h3>${escape(title)}</h3><p>${escape(description)}</p><span class="quiet-label">PLANNED COVERAGE</span></article>`;
 }
+export function hubFeature({id, eyebrow, title, description, href, cta, nativeNavigation = false}) {
+  return `<section class="hub-feature" aria-labelledby="${escape(id)}"><div><p class="eyebrow">${escape(eyebrow)}</p><h2 id="${escape(id)}">${escape(title)}</h2><p>${escape(description)}</p></div><a class="button" href="${escape(href)}"${nativeNavigation ? ' hx-boost="false"' : ''}>${escape(cta)} <span aria-hidden="true">↗</span></a></section>`;
+}
 export function layout({title, description, content, current = '', noindex = false, scripts = []}) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escape(description)}">${noindex ? '<meta name="robots" content="noindex">' : ''}<meta name="theme-color" content="#000000"><title>${escape(title)} · Solar Forge Game Guides</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/htmx.min.js" defer></script></head>

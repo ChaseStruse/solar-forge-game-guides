@@ -1092,21 +1092,25 @@ details p {
   }
 }
 
-/* Aion 2 timers */
-.timers-feature {
+/* Shared Aion 2 hub links */
+.hub-feature-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.hub-feature {
   display:flex;
-  align-items:center;
+  flex-direction:column;
+  align-items:flex-start;
   justify-content:space-between;
-  gap:28px;
+  gap:24px;
+  min-width:0;
   padding:30px 34px;
   border:1px solid var(--line);
   border-radius:var(--radius);
   background:var(--surface);
 }
-.timers-feature .eyebrow { margin-bottom:10px; }
-.timers-feature h2 { font-size:1.55rem; margin-bottom:10px; }
-.timers-feature p:last-child { color:var(--muted); font-size:.85rem; margin-bottom:0; }
-.timers-feature .button { flex-shrink:0; }
+.hub-feature .eyebrow { margin-bottom:10px; }
+.hub-feature h2 { font-size:1.55rem; margin-bottom:10px; }
+.hub-feature p:last-child { color:var(--muted); font-size:.85rem; margin-bottom:0; }
+
+/* Aion 2 timers */
 .timers-page { padding-bottom:75px; }
 .timers-intro {
   display:grid;
@@ -1151,8 +1155,8 @@ details p {
   .timer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media(max-width:700px) {
-  .timers-feature { display:block; padding:25px; }
-  .timers-feature .button { margin-top:22px; }
+  .hub-feature-grid { grid-template-columns:1fr; }
+  .hub-feature { padding:25px; }
   .timers-intro { grid-template-columns:1fr; padding:22px 0 32px; gap:24px; }
   .timers-intro h1 { font-size:3.1rem; }
   .timer-clock { min-width:0; }
@@ -1160,4 +1164,79 @@ details p {
   .timer-schedule { min-height:0; }
   .timer-card { padding:22px; }
   .timer-section { padding-top:45px; }
+}
+
+/* Aion 2 classes */
+.classes-page { padding-bottom:72px; }
+.classes-intro {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  padding:35px 0 52px;
+  border-bottom:1px solid var(--line);
+}
+.classes-intro .lead { max-width:650px; margin-bottom:0; }
+.classes-at-a-glance {
+  flex-shrink:0;
+  display:grid;
+  grid-template-columns:auto auto;
+  align-items:baseline;
+  gap:4px 13px;
+  color:var(--accent);
+}
+.classes-at-a-glance strong { font-family:Georgia,serif; font-size:2.8rem; font-weight:400; line-height:1; }
+.classes-at-a-glance span { font-size:.58rem; letter-spacing:.16em; font-weight:700; }
+.classes-at-a-glance i { grid-column:1/-1; height:1px; background:var(--line); margin:10px 0; }
+.role-nav { display:flex; flex-wrap:wrap; gap:10px; padding:26px 0 12px; }
+.role-nav a {
+  display:inline-flex;
+  align-items:center;
+  gap:24px;
+  min-height:43px;
+  padding:9px 14px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  color:var(--text);
+  font-size:.74rem;
+}
+.role-nav a:hover { border-color:var(--accent); color:var(--accent); }
+.role-nav span { color:var(--accent); font-variant-numeric:tabular-nums; font-size:.65rem; }
+.class-group { padding:58px 0 66px; border-bottom:1px solid var(--line); }
+.class-group .section-heading { margin-bottom:28px; }
+.class-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.class-card {
+  min-height:205px;
+  padding:25px 28px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--surface);
+}
+.class-card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:24px; }
+.class-mark {
+  display:grid;
+  place-items:center;
+  width:42px;
+  height:42px;
+  border:1px solid #66552c;
+  border-radius:4px;
+  color:var(--accent);
+  background:#17140c;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+.class-index { color:var(--muted); font-size:.58rem; letter-spacing:.13em; }
+.class-card h3 { margin-bottom:8px; }
+.class-card p { color:var(--muted); font-size:.83rem; max-width:440px; margin-bottom:0; }
+.class-source { color:var(--muted); font-size:.73rem; padding-top:24px; margin-bottom:0; }
+.class-source a { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+@media(max-width:700px) {
+  .classes-intro { display:block; padding:24px 0 35px; }
+  .classes-intro h1 { font-size:3.2rem; }
+  .classes-at-a-glance { width:max-content; margin-top:30px; }
+  .role-nav { padding-top:20px; }
+  .class-group { padding:44px 0 48px; }
+  .class-grid { grid-template-columns:1fr; gap:12px; }
+  .class-card { min-height:0; padding:22px; }
 }

@@ -26,6 +26,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 | `layout` | `{title, description, content, current?, noindex?, scripts?}` | Full HTML document, metadata, skip link, header, footer, CSS, HTMX. `current: 'home'` marks the home link. `content` is trusted HTML; `scripts` lists local module URLs for page-specific behavior. |
 | `sectionHeading` | `(eyebrow, title, detail?)` | H2 heading and optional supporting copy; stacks on mobile. Inputs are escaped. |
 | `badge` | `(label)` | Noninteractive status, with decorative star. Never convey status by color alone. |
+| `hubFeature` | `{id, eyebrow, title, description, href, cta, nativeNavigation?}` | Shared Aion 2 hub card for timers and classes. Escapes text and renders a real link; `nativeNavigation` disables HTMX boost for pages that need a fresh module load. |
 | `topicCard` | `{number, title, description}` | Noninteractive article for planned coverage. Includes explicit planned label. Do not use for published guides. |
 | `guideLayout` | `{title, description, game, gameHref, category, updated, sections, content, notes?}` | Full guide document using shared shell; `sections: [{id,title}]` populates contents navigation. `content` and `notes` are trusted HTML. Preview is noindex by default. |
 | `escape` | `(value)` | Escape data used in HTML text and quoted attribute values; does not sanitize unsafe URLs or rich HTML. |
@@ -39,7 +40,8 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 - `.button`: primary navigation CTA. Use an anchor for navigation and a real button for actions. `.button-secondary` is outlined. Minimum height is 48px.
 - `.text-link`: gold secondary link with optional decorative arrow. Links need useful visible names, not repeated “click here.”
 - `.game-card`: single clickable game directory card with `.game-art`, `.game-info`, `.game-card-top`, and `.tags`. Never nest interactive controls in the anchor. CSS art is decorative; the game name is real text.
-- `.timers-feature`: a linked utility entry on the Aion 2 hub. Keep its CTA as a real link.
+- `.hub-feature-grid`, `.hub-feature`: shared two-column Aion 2 hub entries for timers and classes, stacked on mobile. Keep each CTA as a real link.
+- `.classes-page`, `.role-nav`, `.class-group`, `.class-grid`, `.class-card`: responsive class overview with in-page role links and noninteractive class summaries. Two class columns on desktop, one on mobile. Each card includes a decorative monogram and a within-role index.
 - `.timers-page`, `.timer-grid`, `.timer-card`, `.timer-clock`: timer page, responsive three/two/one-column card grid, informational event card, and fixed CST clock. Labels and schedules remain visible without JavaScript. Cards are not interactive.
 - `.topic-grid`: three columns on desktop, one on mobile. `.topic-card` is informational and must not look like an enabled tool.
 - `.breadcrumbs`: labeled navigation with slash separators; mark the current destination with `aria-current="page"`.

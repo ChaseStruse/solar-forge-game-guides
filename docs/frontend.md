@@ -8,6 +8,8 @@
 - `frontend/public/assets/timer-schedule.js`: canonical owner-supplied server-time recurrences and pure next-occurrence calculation.
 - `frontend/public/assets/timers.js`: one-second client countdown and fixed CST clock, loaded only on the timer page.
 - `frontend/src/timers-page.mjs`: static timer page and readable CST schedules.
+- `frontend/src/class-data.mjs`: eight class descriptions and owner-specified role grouping.
+- `frontend/src/classes-page.mjs`: static class overview using the shared layout and section headings.
 - `frontend/public/assets/htmx.min.js`: pinned, self-hosted HTMX 4.0.0 runtime; license beside it.
 - `frontend/public/_headers`: Cloudflare response headers, including content security policy.
 - `frontend/build.mjs`: dependency-free Node static build. `frontend/dist/` is disposable output.
@@ -22,7 +24,7 @@ npm run build      # Rebuild after source edits; no automatic watcher
 npm run check      # Build and verify links, assets, fragment targets, and structure
 ```
 
-Routes: `/`, `/games/aion-2/`, `/preview/guide/`, `/games/aion-2/timers/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
+Routes: `/`, `/games/aion-2/`, `/preview/guide/`, `/games/aion-2/timers/`, `/games/aion-2/classes/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
 
 ## Rendering and HTMX
 
@@ -41,6 +43,8 @@ The CSP allows inline styles for HTMX style insertion, but restricts scripts to 
 **Game hub:** breadcrumbs → game identity and honest status → coverage cards → next action. Publish verified guide links here as they become available; replace planned cards when warranted.
 
 **Timers:** read [Aion 2 timers](timers.md) before changing schedules or labels. The Aion 2 hub links to the static timers route with native navigation so the page module initializes reliably. Show fixed CST (UTC−6) explicitly; countdowns depend on the visitor device clock. Keep all nine static schedules readable when scripts are disabled.
+
+**Classes:** read [Aion 2 classes](classes.md) for content provenance and role ordering. The page uses shared layout and headings, class data from one module, responsive cards, and native role anchors. Keep the source link visible.
 
 **Guide:** use `guideLayout()` and the preview route. Breadcrumbs, category, one H1, short summary, verified patch/region/review metadata, sticky desktop contents, article sections, sources and change notes. Mobile contents stay in normal flow. Match section IDs and contents anchors. The current helper always adds noindex for template safety; introduce an explicit publication option when real guides are added.
 
