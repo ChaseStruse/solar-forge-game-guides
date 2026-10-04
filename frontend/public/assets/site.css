@@ -1,13 +1,13 @@
 :root {
   color-scheme:dark;
-  --bg:#080909;
-  --surface:#111211;
-  --surface-raised:#191a17;
-  --line:#302d23;
+  --bg:#000000;
+  --surface:#0a0a0a;
+  --surface-raised:#141414;
+  --line:#292929;
   --text:#f4f0e5;
   --muted:#aaa89f;
   --accent:#e5c36e;
-  --accent-dark:#302817;
+  --accent-dark:#171717;
   --max:1200px;
   --radius:8px;
   font-family:Arial,Helvetica,sans-serif;
@@ -224,7 +224,7 @@ main:focus {
 }
 .button:hover {
   background:#f4d990;
-  color:#080909;
+  color:#000000;
 }
 .button span {
   font-size:1rem;
@@ -238,7 +238,6 @@ main:focus {
   position:relative;
   height:430px;
   overflow:hidden;
-  background:radial-gradient(ellipse at 53% 45%,#b68a2420 0,transparent 68%);
   isolation:isolate;
 }
 .orbit {
@@ -265,25 +264,8 @@ main:focus {
   transform:translate(-50%,-50%) rotate(-32deg) scaleX(1.7);
   border-color:#c9a54727;
 }
-.sun {
-  position:absolute;
-  width:188px;
-  height:188px;
-  border-radius:50%;
-  left:50%;
-  top:45%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle at 36% 30%,#ffe7a3,#d4ae50 52%,#7c5f22);
-  box-shadow:0 0 75px #d9b34723,inset -15px -18px 35px #54411355;
-}
-.sun:after {
-  content:'';
-  position:absolute;
-  inset:9px;
-  border-radius:50%;
-  background:repeating-linear-gradient(0deg,transparent 0px,transparent 4px,#71562128 5px,#71562128 6px);
-  opacity:.6;
-}
+
+
 .art-star {
   position:absolute;
   color:var(--accent);
@@ -329,7 +311,7 @@ main:focus {
 }
 .principle-strip {
   border-block:1px solid var(--line);
-  background:#0c0d0c;
+  background:#050505;
 }
 .principle-strip .container {
   min-height:62px;
@@ -386,7 +368,7 @@ main:focus {
   position:relative;
   overflow:hidden;
   min-height:320px;
-  background:radial-gradient(ellipse at 50% 60%,#78633155,transparent 60%),linear-gradient(135deg,#171810,#29261a 48%,#141510);
+  background:radial-gradient(ellipse at 50% 60%,#ffffff08,transparent 60%),linear-gradient(135deg,#090909,#171717 48%,#080808);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -397,7 +379,7 @@ main:focus {
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(0deg,#080b09db,transparent 55%);
+  background:linear-gradient(0deg,#000000db,transparent 55%);
   z-index:-1;
 }
 .game-art-orbit {
@@ -437,7 +419,7 @@ main:focus {
   width:100px;
   height:240px;
   clip-path:polygon(0 100%,15% 64%,40% 58%,50% 0,60% 58%,85% 64%,100% 100%);
-  background:linear-gradient(90deg,#11130f,#8a794659,#0d100c);
+  background:linear-gradient(90deg,#080808,#55555559,#080808);
 }
 .spire-one {
   left:1%;
@@ -467,7 +449,7 @@ main:focus {
   align-items:center;
   gap:7px;
   border:1px solid #685a32;
-  background:#242014;
+  background:#141414;
   color:#ecd28c;
   padding:6px 10px;
   font-size:.6rem;
@@ -493,8 +475,8 @@ main:focus {
 .tags span {
   font-size:.61rem;
   color:#bdb7a7;
-  background:#1d1d16;
-  border:1px solid #353124;
+  background:#151515;
+  border:1px solid #303030;
   border-radius:3px;
   padding:5px 8px;
 }
@@ -523,7 +505,7 @@ main:focus {
   font-size:1.2rem;
 }
 .about-section {
-  background:#0c0d0c;
+  background:#050505;
   border-block:1px solid var(--line);
 }
 .topic-grid {
@@ -616,7 +598,7 @@ main:focus {
   display:flex;
   justify-content:space-between;
   gap:20px;
-  border-top:1px solid #28271f;
+  border-top:1px solid #252525;
   padding-block:19px;
   color:var(--muted);
   font-size:.55rem;
@@ -658,7 +640,7 @@ main:focus {
   display:grid;
   place-items:center;
   position:relative;
-  background:radial-gradient(ellipse,#cba74325,transparent 65%);
+  background:radial-gradient(ellipse,#ffffff08,transparent 65%);
   overflow:hidden;
 }
 .portal:before,.portal:after {
@@ -841,10 +823,7 @@ details p {
   .forge-art {
     height:375px;
   }
-  .sun {
-    width:155px;
-    height:155px;
-  }
+
   .orbit-one {
     width:260px;
     height:260px;
@@ -933,10 +912,7 @@ details p {
     width:100%;
     margin:auto;
   }
-  .sun {
-    width:140px;
-    height:140px;
-  }
+
   .orbit-one {
     width:220px;
     height:220px;

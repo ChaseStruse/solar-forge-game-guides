@@ -6,18 +6,18 @@ Read this catalog before creating frontend UI. Source: `frontend/src/components.
 
 | Token | Value | Purpose |
 | --- | --- | --- |
-| `--bg` | `#080909` | Page canvas |
-| `--surface` | `#111211` | Cards and callouts |
-| `--surface-raised` | `#191a17` | Raised surfaces |
-| `--line` | `#302d23` | Quiet borders |
+| `--bg` | `#000000` | Page canvas |
+| `--surface` | `#0a0a0a` | Cards and callouts |
+| `--surface-raised` | `#141414` | Raised surfaces |
+| `--line` | `#292929` | Quiet borders |
 | `--text` | `#f4f0e5` | Primary text |
 | `--muted` | `#aaa89f` | Supporting copy |
 | `--accent` | `#e5c36e` | Gold actions and emphasis |
-| `--accent-dark` | `#302817` | Dark accent surface |
+| `--accent-dark` | `#171717` | Dark accent surface |
 | `--max` | `1200px` | Maximum container width |
 | `--radius` | `8px` | Card radius |
 
-Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm gold accents, near-black surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
+Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm gold accents, neutral black and charcoal surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
 
 ## Renderer catalog
 
@@ -33,7 +33,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 
 ## CSS and markup patterns
 
-- `.forge-art`: celestial sun and orbital rings composed in CSS, with a local `solar-anvil.svg` illustration below the sun. The parent provides the accessible image description; the nested SVG image has empty alt text. `.solar-anvil` scales within the illustration at every breakpoint. Keep the anvil’s horn, broad face, narrow waist, and flared base recognizable.
+- `.forge-art`: fine orbital rings composed in CSS, with a local `solar-anvil.svg` illustration and no background sun or warm background wash. The parent provides the accessible image description; the nested SVG image has empty alt text. `.solar-anvil` scales within the illustration at every breakpoint. Keep the anvil’s horn, broad face, narrow waist, and flared base recognizable.
 - `.container`: centered content width; 48px side gutters on desktop, 20px on mobile.
 - `.section`, `.section-heading`, `.eyebrow`, `.lead`: standard section spacing and text hierarchy. Use exactly one H1 per page.
 - `.button`: primary navigation CTA. Use an anchor for navigation and a real button for actions. `.button-secondary` is outlined. Minimum height is 48px.
