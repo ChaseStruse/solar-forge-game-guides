@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node frontend/build.mjs",
     "dev": "npm run build && node frontend/serve.mjs",
-    "check": "npm run build && node frontend/check.mjs"
+    "check": "npm run build && node frontend/check.mjs && node --test frontend/tests/*.test.mjs"
   },
   "engines": { "node": ">=22" }
 }
