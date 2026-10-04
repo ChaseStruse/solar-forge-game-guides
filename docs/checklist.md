@@ -1,6 +1,6 @@
 # Aion 2 Weekly Priorities Checklist
 
-The page content lives in `frontend/src/checklist-data.mjs`. The user-provided “Weekly Priorities” screenshot sets the **15 task names, order, priorities, and time estimates**. Time estimates are planning aids from that screenshot, not game limits, official durations, or promises. “1,5–3 Hours” in the image is normalized to “1.5–3 hr”. Keep the image's task labels, including “Odyle Morph”, “Wind Breeze”, and “Duty Missions”.
+The page content lives in `frontend/games/aion-2/checklist/index.html`. The user-provided “Weekly Priorities” screenshot sets the **15 task names, order, priorities, and time estimates**. Time estimates are planning aids from that screenshot, not game limits, official durations, or promises. “1,5–3 Hours” in the image is normalized to “1.5–3 hr”. Keep the image's task labels, including “Odyle Morph”, “Wind Breeze”, and “Duty Missions”.
 
 This list mixes daily tasks, weekly allowances, and timed events. Do not auto-reset it based on an assumed game reset schedule. Users clear their checks manually. Checkbox state is stored in `localStorage` for this browser and origin only. There is no account, sync, or backend. Without JavaScript, the static tasks, descriptions, sources, and native checkboxes remain usable for the current page visit.
 
@@ -18,4 +18,4 @@ Short activity descriptions are paraphrased from source pages linked beside each
 | Abyss | [Aion 2 Maps Abyss](https://aion2maps.com/guides/abyss/) |
 | Battlefield | [Aion 2 Maps PvP](https://aion2maps.com/guides/pvp/) |
 
-The UI should use the shared black and gold palette and Title Case headings. Build task rows from the data module, keep links real, and make keyboard interaction and small screens first-class. The Aion 2 hub and game section navigation should link to `/games/aion-2/checklist/`.
+The UI should use the shared black and gold palette and Title Case headings. Keep task rows in the HTML, keep links real, and make keyboard interaction and small screens first-class. The Aion 2 hub and game section navigation should link to `/games/aion-2/checklist/`.

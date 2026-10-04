@@ -1,35 +1,26 @@
 # Solar Forge Game Guides
 
-A lightweight, responsive home for MMORPG guides. Starts with the central Forge homepage and an Aion 2 coming-soon hub.
+A lightweight, responsive HTML and HTMX site for MMORPG guides. The Aion 2 section includes event timers, classes, and a checklist.
 
-## Local preview
+## Local Preview
 
-Requires Node.js 22+. No dependency installation needed.
+Serve the `frontend/` directory with any static file server. For example:
 
 ```sh
-npm run dev
+python -m http.server 4321 --directory frontend
 ```
 
-Open **http://localhost:4321**. Edit `frontend/`, then run `npm run build` and refresh; the preview server does not auto-rebuild.
+Open **http://localhost:4321/**. Edit the HTML, CSS, or JavaScript in `frontend/` and refresh. No package installation or build command is required.
 
 - `/` — home and game directory
-- `/games/aion-2/` — Aion 2 landing page
-- `/games/aion-2/timers/` — live event countdowns in fixed CST (UTC−6)
-- `/games/aion-2/classes/` — eight classes grouped by Tank, DPS, and Healer
-- `/games/aion-2/checklist/` — fifteen weekly priorities with browser-saved progress
-- `/preview/guide/` — reusable guide layout example (not indexed)
-
-## Build and verify
-
-```sh
-npm run build
-npm run check
-```
-
-Static output goes to `frontend/dist/`. Shared Node renderers eliminate repeated layout markup; the browser receives HTML, CSS, self-hosted HTMX 4.0.0, and a small countdown module on the timers page. No client framework, web fonts, database, or production Node server.
+- `/games/aion-2/` — Aion 2 hub
+- `/games/aion-2/timers/` — event countdowns in fixed CST (UTC−6)
+- `/games/aion-2/classes/` — classes grouped by Tank, DPS, and Healer
+- `/games/aion-2/checklist/` — fifteen priorities with browser-saved progress
+- `/preview/guide/` — guide layout example (not indexed)
 
 ## Cloudflare Pages
 
-Framework: **None**. Repository root: **root**. Build command: **`npm run build`**. Output: **`frontend/dist`**. Node: **22+**. Deployment is not performed automatically by this repository.
+Framework preset: **None**. Build command: **leave empty**. Output directory: **`frontend`**. Deployment is not performed automatically by this repository.
 
-Read [class source and grouping](docs/classes.md), [timer schedules](docs/timers.md), and [checklist sources](docs/checklist.md) for content details. Read [frontend architecture](docs/frontend.md) for workflow and hosting, [reusable components](docs/components.md) for styling and composition, and [AGENTS.md](AGENTS.md) for future-model instructions.
+Read [frontend architecture](docs/frontend.md), [reusable patterns](docs/components.md), and [AGENTS.md](AGENTS.md) before adding pages. Aion 2 content sources are documented in [timers](docs/timers.md), [classes](docs/classes.md), and [checklist](docs/checklist.md).

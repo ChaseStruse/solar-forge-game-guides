@@ -1,72 +1,66 @@
-# Frontend architecture and workflow
+# Frontend Architecture And Workflow
 
 ## Structure
 
-- `frontend/src/components.mjs`: shared page shell, section heading, badge, topic card, guide layout, escaping.
-- `frontend/src/pages.mjs`: author-written home, Aion 2 hub, guide preview, and 404 content.
-- `frontend/public/assets/site.css`: design tokens, components, responsive rules, CSS illustrations.
-- `frontend/public/assets/timer-schedule.js`: canonical owner-supplied server-time recurrences and pure next-occurrence calculation.
-- `frontend/public/assets/timers.js`: one-second client countdown and fixed CST clock, loaded only on the timer page.
-- `frontend/src/timers-page.mjs`: static timer page and readable CST schedules.
-- `frontend/src/class-data.mjs`: eight class descriptions and owner-specified role grouping.
-- `frontend/src/classes-page.mjs`: static class overview using the shared layout and section headings.
-- `frontend/src/checklist-data.mjs`: owner-supplied checklist order, priorities, and estimates with researched activity summaries and sources.
-- `frontend/src/checklist-page.mjs`: static Aion 2 checklist markup.
-- `frontend/public/assets/checklist.js`: local browser persistence, progress count, and manual clearing.
-- `frontend/public/assets/htmx.min.js`: pinned, self-hosted HTMX 4.0.0 runtime; license beside it.
-- `frontend/public/_headers`: Cloudflare response headers, including content security policy.
-- `frontend/build.mjs`: dependency-free Node static build. `frontend/dist/` is disposable output.
-- `frontend/serve.mjs`: local preview only; not a production server.
-- `frontend/check.mjs`: build integrity checks.
+`frontend/` is the directly deployable site. There is no package manager, build step, framework, or generated output directory.
 
-Node 22 or newer is required for development. There is no package installation or runtime backend. From the repository root:
+| Path | Purpose |
+| --- | --- |
+| `frontend/index.html` | Forge homepage |
+| `frontend/games/aion-2/index.html` | Aion 2 hub |
+| `frontend/games/aion-2/timers/index.html` | Static schedules and countdown markup |
+| `frontend/games/aion-2/classes/index.html` | Role and class overview |
+| `frontend/games/aion-2/checklist/index.html` | Weekly priorities and source links |
+| `frontend/preview/guide/index.html` | Noindex example for future guides |
+| `frontend/404.html` | Missing-page document |
+| `frontend/assets/site.css` | Shared tokens, layouts, components, and responsive rules |
+| `frontend/assets/htmx.min.js` | Pinned, self-hosted HTMX 4.0.0; license beside it |
+| `frontend/assets/timer-schedule.js`, `timers.js` | Browser countdown logic |
+| `frontend/assets/checklist.js` | Browser progress storage and clear action |
+| `frontend/_headers`, `frontend/robots.txt` | Cloudflare headers and crawler rules |
+
+All public pages are hand-edited HTML. HTMX behavior is written as HTML attributes; there is no special `.htmx` extension. Native links, checkboxes, and `details` work without JavaScript. Live countdowns and saved checks need small browser scripts because HTMX cannot calculate or persist them without a server.
+
+## Local Preview
+
+Use any static file server pointed at `frontend/`. For example, if Python is available:
 
 ```sh
-npm run dev        # Build once and serve at http://localhost:4321
-npm run build      # Rebuild after source edits; no automatic watcher
-npm run check      # Build and verify links, assets, fragment targets, and structure
+python -m http.server 4321 --directory frontend
 ```
 
-Routes: `/`, `/games/aion-2/`, `/preview/guide/`, `/games/aion-2/timers/`, `/games/aion-2/classes/`, `/games/aion-2/checklist/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
+Open `http://localhost:4321/`. Refresh after editing. Opening HTML directly from disk can break absolute links and browser storage.
 
-## Rendering and HTMX
+## Pages And HTMX
 
-HTMX 4 enhances same-origin anchors via `hx-boost:inherited="true"` on the body. Full static documents are served for both ordinary and boosted requests; no fragments API, backend, or client router is needed. Browser history and title updates are handled by HTMX. Native anchor links and `details` handle in-page navigation and disclosures.
+HTMX 4 enhances same-origin links through `hx-boost:inherited="true"` on each page's body. Normal links remain usable if JavaScript is off. Timer and checklist links use `hx-boost="false"` so their page scripts start after a full load. Keep the same header, footer, skip link, metadata, Aion 2 section tabs, and breadcrumbs across pages. See [Reusable components](components.md) for the patterns.
 
-The browser runs the vendored HTMX runtime on all pages. The timers page loads a small native module to tick countdowns once a second. The checklist page loads a small native module to store checkbox state in `localStorage`. Script-driven pages use native link navigation so their modules initialize reliably. Build scripts are Node JavaScript and do not ship to the browser. Static content and native checkboxes remain usable without JavaScript. Future search, party tools, or mutations need real endpoints and a separate scope; do not add pretend controls.
+Routes: `/`, `/games/aion-2/`, `/games/aion-2/timers/`, `/games/aion-2/classes/`, `/games/aion-2/checklist/`, `/preview/guide/`, and `/404.html`. The guide preview is noindex and excluded by `robots.txt`.
 
-HTMX 4 uses explicit inheritance. Reference [HTMX 4 docs](https://four.htmx.org/docs) before implementing new interactions. The minified runtime comes from `https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.min.js`. Preserve its license; pin and review upgrades. No CDN request happens during a visitor's session.
+The content security policy in `_headers` restricts scripts to local files. Avoid inline handlers, eval, and HTMX expressions that require eval. Keep assets local and optimized.
 
-The CSP allows inline styles for HTMX style insertion, but restricts scripts to self and disallows eval. Avoid inline event handlers, `js:` expressions, or eval-dependent HTMX features. The preview server does not emulate Cloudflare `_headers`; test deployed header behavior before adding new integrations.
-
-## Page recipes
+## Page Recipes
 
 **Home:** shared header → hero → principles → game directory → planned coverage → closing note → shared footer.
 
-**Game hub:** breadcrumbs → section navigation → game identity and honest status → coverage cards → next action. Publish verified guide links here as they become available; replace planned cards when warranted.
+**Game hub:** breadcrumbs → section navigation → game identity → coverage cards → next action.
 
-**Timers:** read [Aion 2 timers](timers.md) before changing schedules or labels. The Aion 2 hub links to the static timers route with native navigation so the page module initializes reliably. Show fixed CST (UTC−6) explicitly; countdowns depend on the visitor device clock. Keep all nine static schedules readable when scripts are disabled.
+**Timers:** read [Aion 2 timers](timers.md). Keep all nine readable CST schedules in HTML. The browser script updates live countdowns.
 
-**Classes:** read [Aion 2 classes](classes.md) for content provenance and role ordering. The page uses shared layout and headings, class data from one module, responsive cards, and native role anchors. Keep the source link visible.
+**Classes:** read [Aion 2 classes](classes.md). Keep the owner-specified grouping and class image attribution.
 
-**Checklist:** read [Aion 2 checklist](checklist.md) for screenshot provenance and activity sources. Keep the original fifteen-item order, priority, and time estimates. Browser progress is local to the current origin, and users clear it manually. Do not infer a reset time from the page title. The page uses the shared Aion section navigation, responsive rows, visible source links, native checkboxes, and a small page module.
+**Checklist:** read [Aion 2 checklist](checklist.md). Keep all fifteen tasks, estimates, source links, native checkboxes, and manual clearing.
 
-**Guide:** use `guideLayout()` and the preview route. Breadcrumbs, category, one H1, short summary, verified patch/region/review metadata, sticky desktop contents, article sections, sources and change notes. Mobile contents stay in normal flow. Match section IDs and contents anchors. The current helper always adds noindex for template safety; introduce an explicit publication option when real guides are added.
-
-Add routes in the build registry. Use directory `index.html` output and absolute internal URLs. Do not copy the site header or footer into pages. Renderer HTML arguments are trusted author content: escape data strings and sanitize any future external rich content before rendering.
+**Guide:** copy the structure of `/preview/guide/` and replace example content with sourced advice. Include breadcrumbs, one H1, summary, version and review metadata, contents links, article sections, sources, and change notes. Remove noindex only when ready to publish.
 
 ## Cloudflare Pages
 
-Use the repository root as the project root, framework preset **None**, build command `npm run build`, and output directory `frontend/dist`. Set Node to 22 or newer. Select the intended production branch explicitly (current work is on `Aion2`). Cloudflare serves the generated directory and uses the top-level 404 page for missing routes. No SPA fallback or rewrites are needed.
+Set framework preset to **None**, leave the build command **empty**, and set the output directory to **`frontend`**. No Node version or package install is needed. Select the intended production branch explicitly. Cloudflare serves directory `index.html` files and the top-level 404 page. No SPA rewrite is needed.
 
-See [Cloudflare static HTML deployment](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/). This change prepares deployment; it does not publish a site or provision an account. After deployment, verify deep links, missing-page 404 status, and `_headers` responses on the real URL.
+See [Cloudflare static HTML deployment](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/). This repository is not deployed automatically. After deployment, verify deep links, missing-page status, and `_headers` behavior on the real URL.
 
-## Validation before committing
+## Validation Before Committing
 
-Run `npm run check` (includes timer recurrence tests). Inspect `/`, `/games/aion-2/`, and `/preview/guide/` at 320, 390, 768, and 1440 CSS pixels. Verify no horizontal overflow, readable contrast, visible focus, skip link, table scrolling, and native disclosures. Test boosted navigation, browser Back/Forward, and navigation with JavaScript disabled. Check the browser console and missing asset responses.
+Inspect edited pages at 320, 390, 768, and 1440 CSS pixels. Check internal links, asset responses, fragment targets, unique IDs, one H1 per page, keyboard focus, mobile overflow, and browser console errors. Test navigation with and without JavaScript. For timer changes, verify recurrence and CST math; for checklist changes, verify saving, reload, and clearing.
 
-Commit early, commit often. Document each shared component and behavior when it changes. Follow DRY principles and update the existing component before adding another implementation.
-
-### Foundation verification (2026-10-03)
-
-`npm run check` passed for all four documents. Chromium checks passed for HTMX 4.0.0 boosted navigation (without a document reload), title updates, browser Back, no-JavaScript navigation, the keyboard skip link, and the native guide disclosure. All four routes were checked for horizontal overflow at 320, 390, 768, and 1440px. Desktop home, mobile home, mobile Aion hub, and desktop guide screenshots were visually reviewed. No browser JavaScript errors occurred. Cloudflare deployment and production header behavior remain untested because this site has not been deployed.
+Commit early and often. Update the component catalog and page documentation with every shared pattern or behavior change. Follow DRY by using existing CSS classes and markup patterns. When editing repeated shell markup, update every relevant HTML page in the same change.

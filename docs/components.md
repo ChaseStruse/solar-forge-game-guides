@@ -1,6 +1,6 @@
 # Reusable components and visual language
 
-Read this catalog before creating frontend UI. Source: `frontend/src/components.mjs` and `frontend/public/assets/site.css`. The live guide template is `/preview/guide/` while the local server runs.
+Read this catalog before creating frontend UI. Source: `frontend/assets/site.css` and the HTML pages in `frontend/`. The guide template is `/preview/guide/` while a local static server runs.
 
 ## Design tokens
 
@@ -19,19 +19,17 @@ Read this catalog before creating frontend UI. Source: `frontend/src/components.
 
 Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Use Title Case for all page titles, H1–H3 headings, card titles, captions, and disclosure titles: capitalize every word (for example, “Event Timers” and “Before You Begin”). Keep body copy and action labels in natural sentence case. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm gold accents, neutral black and charcoal surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
 
-## Renderer catalog
+## HTML Patterns
 
-| Component | Input | Contract |
+| Pattern | Example | Contract |
 | --- | --- | --- |
-| `layout` | `{title, description, content, current?, noindex?, scripts?}` | Full HTML document, metadata, skip link, header, footer, CSS, HTMX. `current: 'home'` marks the home link. `content` is trusted HTML; `scripts` lists local module URLs for page-specific behavior. |
-| `sectionHeading` | `(eyebrow, title, detail?)` | H2 heading and optional supporting copy; stacks on mobile. Inputs are escaped. |
-| `badge` | `(label)` | Noninteractive status, with decorative star. Never convey status by color alone. |
-| `hubFeature` | `{id, eyebrow, title, description, href, cta, nativeNavigation?}` | Shared Aion 2 hub card for timers, classes, and checklist. Escapes text and renders a real link; `nativeNavigation` disables HTMX boost for pages that need a fresh module load. |
-| `aionNav` | `(current)` | Aion 2 section tabs for Overview, Timers, Classes, and Checklist. Marks the active link with `aria-current="page"`; script-driven pages use native navigation. |
-| `topicCard` | `{number, title, description}` | Noninteractive article for planned coverage. Includes explicit planned label. Do not use for published guides. |
-| `guideLayout` | `{title, description, game, gameHref, category, updated, sections, content, notes?}` | Full guide document using shared shell; `sections: [{id,title}]` populates contents navigation. `content` and `notes` are trusted HTML. Preview is noindex by default. |
-| `escape` | `(value)` | Escape data used in HTML text and quoted attribute values; does not sanitize unsafe URLs or rich HTML. |
-| `arrow` | None | Decorative arrow HTML; accessible link name must come from surrounding text. |
+| Page shell | `frontend/index.html` | Doctype, metadata, skip link, header, main, footer, local CSS, and local HTMX script. Copy the shell when adding a page and update its title, description, and navigation state. |
+| Section heading | Home `#games` | `.section-heading` with eyebrow, H2, and optional detail. Keep one H1 per page. |
+| Status badge | Aion 2 hub | `.badge` is informational; status must be stated in text. |
+| Hub feature | Aion 2 hub | `.hub-feature` with H2, summary, and a real CTA link. Set `hx-boost="false"` when the destination requires a page script. |
+| Aion section tabs | Any Aion 2 page | `.game-nav` contains Overview, Timers, Classes, and Checklist. Mark exactly one link `aria-current="page"`. |
+| Planned topic card | Home and Aion hub | `.topic-card` is noninteractive and explicitly labeled as planned coverage. |
+| Guide layout | `frontend/preview/guide/index.html` | Breadcrumbs, category, one H1, summary, contents links, readable article, source notes. Remove noindex only for a verified published guide. |
 
 ## CSS and markup patterns
 
@@ -43,7 +41,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 - `.game-card`: single clickable game directory card with `.game-art`, `.game-info`, `.game-card-top`, and `.tags`. Never nest interactive controls in the anchor. CSS art is decorative; the game name is real text.
 - `.hub-feature-grid`, `.hub-feature`: shared three-column Aion 2 hub entries, reduced to two and then one column at the standard breakpoints. Keep each CTA as a real link.
 - `.game-nav`: shared visible Aion 2 section links, wrapping on small screens. Active state uses gold fill plus `aria-current`.
-- `.checklist-page`, `.checklist-item`, `.checklist-progress`: responsive task list based on `checklist-data.mjs`. Desktop rows show task, priority, and time columns; mobile rows stack metadata. Native labeled checkboxes work without JavaScript. Progress and clearing use a page module; the status line explains browser storage.
+- `.checklist-page`, `.checklist-item`, `.checklist-progress`: responsive task list in `frontend/games/aion-2/checklist/index.html`. Desktop rows show task, priority, and time columns; mobile rows stack metadata. Native labeled checkboxes work without JavaScript. A small browser script handles progress and clearing; the status line explains browser storage.
 - `.classes-page`, `.role-nav`, `.class-group`, `.class-grid`, `.class-card`: responsive class overview with in-page role links and noninteractive class summaries. Two class columns on desktop, one on mobile. Each card includes a locally hosted 150×150 WebP class icon and a within-role index. The icon has empty alt text because the adjacent H3 gives the class name.
 - `.timers-page`, `.timer-grid`, `.timer-card`, `.timer-clock`: timer page, responsive three/two/one-column card grid, informational event card, and fixed CST clock. Labels and schedules remain visible without JavaScript. Cards are not interactive.
 - `.topic-grid`: three columns on desktop, one on mobile. `.topic-card` is informational and must not look like an enabled tool.
@@ -64,8 +62,8 @@ Illustrations are original CSS and SVG geometry, not official Aion art. The `AIO
 
 ## Adding a reusable component
 
-1. Look for an existing renderer and CSS pattern that can cover the use case.
-2. Put genuinely reusable rendering in `components.mjs`; keep page content in `pages.mjs` or a dedicated future content module.
-3. Use tokens; escape data; specify heading level and accessibility behavior.
-4. Add the component's input contract, states, mobile behavior, and example usage here.
+1. Look for an existing HTML and CSS pattern that covers the use case.
+2. Reuse the existing classes and structure. HTML is edited directly; update repeated shell or navigation markup on every affected page.
+3. Use tokens; escape authored text and attribute values; specify heading level and accessibility behavior.
+4. Document the pattern, states, mobile behavior, and example page here.
 5. Verify it in a real page, then commit code and documentation together.
