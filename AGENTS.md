@@ -8,6 +8,7 @@ Read `docs/README.md`, `docs/components.md`, and `docs/frontend.md` before front
 - Keep frontend source inside `frontend/`. Generate static HTML using shared layouts; never edit `frontend/dist/`.
 - Use HTMX 4 for enhanced interactions, native HTML for ordinary navigation and disclosure, and shared CSS for styling. Avoid a client framework.
 - Preserve working links and content without JavaScript. HTMX 4 uses explicit `:inherited` attributes; do not copy v2 inheritance assumptions.
+- Capitalize every word in page and section titles, including card and guide titles (for example, “Event Timers”). Follow `docs/components.md` for title styling.
 - Use the shared tokens, responsive layouts, focus styles, and guide template. Document additions in `docs/`.
 - Verify mobile and desktop, keyboard access, route links, and a production build. Keep dependencies and asset sizes small.
 - Do not invent game facts, guide counts, contributors, update dates, or functional tools. Label planned content honestly.

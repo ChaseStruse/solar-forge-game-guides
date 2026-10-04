@@ -17,7 +17,7 @@ Read this catalog before creating frontend UI. Source: `frontend/src/components.
 | `--max` | `1200px` | Maximum container width |
 | `--radius` | `8px` | Card radius |
 
-Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm gold accents, neutral black and charcoal surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
+Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Use Title Case for all page titles, H1–H3 headings, card titles, captions, and disclosure titles: capitalize every word (for example, “Event Timers” and “Before You Begin”). Keep body copy and action labels in natural sentence case. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm gold accents, neutral black and charcoal surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
 
 ## Renderer catalog
 
