@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 240" fill="none">
+  <defs>
+    <linearGradient id="steel" x1="230" y1="40" x2="230" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#48402b"/><stop offset=".4" stop-color="#242118"/><stop offset="1" stop-color="#11110e"/></linearGradient>
+    <linearGradient id="edge" x1="28" y1="60" x2="398" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#796333"/><stop offset=".48" stop-color="#f1d58b"/><stop offset="1" stop-color="#a68540"/></linearGradient>
+    <radialGradient id="heat"><stop stop-color="#e9c66a" stop-opacity=".2"/><stop offset="1" stop-color="#e9c66a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="245" cy="213" rx="178" ry="24" fill="url(#heat)"/>
+  <!-- Horn, broad working face, narrow waist, and flared foot. -->
+  <path d="M30 60 140 60 152 42 388 42 401 57 401 85 331 85 317 106 279 123 278 151 296 177 340 193 350 212 145 212 155 193 197 176 214 150 213 124 184 111 158 89 110 87C77 86 49 77 30 60Z" fill="url(#steel)" stroke="#9c803e" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M30 60H153L163 52H399L388 42H152L140 60" fill="url(#edge)"/>
+  <path d="M164 53H398M166 59H390" stroke="#f5d991" stroke-opacity=".65"/>
+  <path d="M332 86 316 105 277 122 276 151 295 178 339 195M214 125 232 133 232 152 212 187" stroke="#d4b263" stroke-opacity=".25"/>
+  <path d="M155 194H339L349 212H145Z" fill="#29251a"/>
+  <path d="M156 194H338M151 205H343" stroke="#b49349" stroke-opacity=".6"/>
+  <circle cx="253" cy="89" r="12" stroke="#d9b65f" stroke-opacity=".8"/>
+  <path d="M253 70V75M253 103V108M234 89H239M267 89H272M240 76 244 80M262 98 266 102M240 102 244 98M262 80 266 76" stroke="#d9b65f"/>
+  <path d="m200 24 2-9m49 11 1-17m40 14 4-10" stroke="#edca73" stroke-linecap="round"/>
+</svg>

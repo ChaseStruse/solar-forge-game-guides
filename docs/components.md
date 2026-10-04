@@ -6,18 +6,18 @@ Read this catalog before creating frontend UI. Source: `frontend/src/components.
 
 | Token | Value | Purpose |
 | --- | --- | --- |
-| `--bg` | `#101312` | Page canvas |
-| `--surface` | `#171b19` | Cards and callouts |
-| `--surface-raised` | `#1c211e` | Raised surfaces |
-| `--line` | `#303630` | Quiet borders |
-| `--text` | `#f1eee6` | Primary text |
-| `--muted` | `#a7aca2` | Supporting copy |
-| `--accent` | `#efb17b` | Copper actions and emphasis |
-| `--accent-dark` | `#342a21` | Dark accent surface |
+| `--bg` | `#080909` | Page canvas |
+| `--surface` | `#111211` | Cards and callouts |
+| `--surface-raised` | `#191a17` | Raised surfaces |
+| `--line` | `#302d23` | Quiet borders |
+| `--text` | `#f4f0e5` | Primary text |
+| `--muted` | `#aaa89f` | Supporting copy |
+| `--accent` | `#e5c36e` | Gold actions and emphasis |
+| `--accent-dark` | `#302817` | Dark accent surface |
 | `--max` | `1200px` | Maximum container width |
 | `--radius` | `8px` | Card radius |
 
-Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm copper accents, subdued olive surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
+Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No external fonts. Large headings have tight spacing; body copy has generous line height. Reserve uppercase letter spacing for short labels. Use 4/8-pixel spacing increments where practical and the existing component spacing before custom values. Prefer warm gold accents, near-black surfaces, fine borders, and generous negative space. Do not add gradients to ordinary cards; illustrative hero art may use gradients.
 
 ## Renderer catalog
 
@@ -33,16 +33,17 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 
 ## CSS and markup patterns
 
+- `.forge-art`: celestial sun and orbital rings composed in CSS, with a local `solar-anvil.svg` illustration below the sun. The parent provides the accessible image description; the nested SVG image has empty alt text. `.solar-anvil` scales within the illustration at every breakpoint. Keep the anvil’s horn, broad face, narrow waist, and flared base recognizable.
 - `.container`: centered content width; 48px side gutters on desktop, 20px on mobile.
 - `.section`, `.section-heading`, `.eyebrow`, `.lead`: standard section spacing and text hierarchy. Use exactly one H1 per page.
 - `.button`: primary navigation CTA. Use an anchor for navigation and a real button for actions. `.button-secondary` is outlined. Minimum height is 48px.
-- `.text-link`: copper secondary link with optional decorative arrow. Links need useful visible names, not repeated “click here.”
+- `.text-link`: gold secondary link with optional decorative arrow. Links need useful visible names, not repeated “click here.”
 - `.game-card`: single clickable game directory card with `.game-art`, `.game-info`, `.game-card-top`, and `.tags`. Never nest interactive controls in the anchor. CSS art is decorative; the game name is real text.
 - `.topic-grid`: three columns on desktop, one on mobile. `.topic-card` is informational and must not look like an enabled tool.
 - `.breadcrumbs`: labeled navigation with slash separators; mark the current destination with `aria-current="page"`.
 - `.status-panel`, `.forge-note`: status and follow-on navigation with one clear action.
 - `.guide-layout`, `.toc`, `.guide-content`: desktop sidebar and readable article column, stacked below 700px.
-- `.callout`: important contextual note with a copper border. Critical requirements should remain visible.
+- `.callout`: important contextual note with a gold border. Critical requirements should remain visible.
 - `.table-scroll`: focusable horizontal scrolling region around a semantic table. Supply region label, caption, and column headers.
 - Native `details`/`summary`: optional supporting content, keyboard accessible without JavaScript.
 
@@ -52,7 +53,7 @@ Breakpoints are 1050px and 700px. Header navigation wraps into a visible second 
 
 All interactive elements have visible keyboard focus. The skip link targets `#main`; its `tabindex="-1"` supports focus transfer. Decorative illustrations must use `aria-hidden="true"`, or use a concise descriptive `role="img"` label when meaningful. Respect reduced motion. Do not remove outlines or invent clickable divs.
 
-Illustrations are original CSS geometry, not official Aion art. The `AION 2` treatment is typographic and must not be described as an official logo. Future images need explicit dimensions, descriptive alt text when meaningful, and optimized local assets; lazy-load below the fold.
+Illustrations are original CSS and SVG geometry, not official Aion art. The `AION 2` treatment is typographic and must not be described as an official logo. Future images need explicit dimensions, descriptive alt text when meaningful, and optimized local assets; lazy-load below the fold.
 
 ## Adding a reusable component
 
