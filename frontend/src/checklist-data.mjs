@@ -1,0 +1,19 @@
+// Task order, priorities, and time estimates follow the user-provided
+// "Weekly Priorities" image. Context and source URLs were researched separately.
+export const checklistItems = [
+  {id:'odyle-morph', title:'Odyle Morph', priority:'High', time:'1 min', description:'Use Substance Morph to make Odyle Energy for dungeon reward claims.', source:'https://aion2maps.com/guides/daily-and-weekly/', sourceLabel:'Aion 2 Maps'},
+  {id:'wind-breeze', title:'Wind Breeze', priority:'High', time:'1 min', description:'Check the Wind Breeze Merchant for useful weekly stock if your membership gives access.', source:'https://aion2maps.com/guides/global-differences/', sourceLabel:'Aion 2 Maps'},
+  {id:'sanctuary', title:'Sanctuary', priority:'Highest', time:'30–90 min', description:'Plan a group run of Sanctuary raid content, such as Ludra.', source:'https://aion2maps.com/guides/dungeons-and-raids/', sourceLabel:'Aion 2 Maps'},
+  {id:'ascension-trial', title:'Ascension Trial', priority:'High', time:'15–20 min', description:'Use your weekly entries in this solo challenge; its difficulty tiers reward progression.', source:'https://aion2maps.com/guides/daily-and-weekly/', sourceLabel:'Aion 2 Maps'},
+  {id:'daily-dungeons', title:'Daily Dungeons', priority:'High', time:'10–20 min', description:'Spend your daily dungeon entries for upgrade materials; the entries follow a weekly limit.', source:'https://aion2maps.com/guides/dungeons-and-raids/', sourceLabel:'Aion 2 Maps'},
+  {id:'command-missions', title:'Command Missions', priority:'High', time:'1.5–3 hr', description:'Pick up Command quests from the city or Abyss merchant and work through the objectives.', source:'https://aion2maps.com/guides/daily-and-weekly/', sourceLabel:'Aion 2 Maps'},
+  {id:'conquest', title:'Conquest', priority:'High', time:'4–8 hr', description:'Run the reward-focused Expedition mode after learning the encounter in Exploration.', source:'https://metaroad.gg/aion2/dungeons/aion-2-dungeon-system-expedition-transcendence-sanctuary', sourceLabel:'Metaroad'},
+  {id:'transcendence', title:'Transcendence', priority:'High', time:'3–6 hr', description:'Clear timed dungeon stages for Arcana-related progression.', source:'https://aion2.vi.ki/transcendence', sourceLabel:'Aion 2 vi.ki'},
+  {id:'nightmare', title:'Nightmare', priority:'Medium', time:'20–40 min', description:'Challenge solo boss stages to collect fragments for the Nightmare shop.', source:'https://aion2maps.com/guides/nightmare/', sourceLabel:'Aion 2 Maps'},
+  {id:'shugo-festival', title:'Shugo Festival', priority:'Medium', time:'70 min', description:'Join the hourly Shugo minigames while you have entries available.', source:'https://shugo.gg/timers', sourceLabel:'Shugo.GG'},
+  {id:'duty-missions', title:'Duty Missions', priority:'Medium', time:'30–60 min', description:'Complete Duty quests from the journal; these refresh daily.', source:'https://aion2maps.com/guides/daily-and-weekly/', sourceLabel:'Aion 2 Maps'},
+  {id:'spacetime-rift', title:'Spacetime Rift', priority:'Medium', time:'60 min per rift', description:'Enter a timed rift for cross-faction play, quests, and Abyss Points.', source:'https://shugo.gg/timers', sourceLabel:'Shugo.GG'},
+  {id:'abyss', title:'Abyss', priority:'Low', time:'7 hr', description:'Spend planned time in the faction PvPvE zone on combat, quests, and events.', source:'https://aion2maps.com/guides/abyss/', sourceLabel:'Aion 2 Maps'},
+  {id:'battlefield', title:'Battlefield', priority:'Low', time:'30–60 min', description:'Queue for organized PvP and work toward weekly Battlefield rewards.', source:'https://aion2maps.com/guides/pvp/', sourceLabel:'Aion 2 Maps'},
+  {id:'exploration', title:'Exploration', priority:'Low', time:'5 min per run', description:'Use Exploration mode to learn Expedition boss patterns before Conquest.', source:'https://metaroad.gg/aion2/dungeons/aion-2-dungeon-system-expedition-transcendence-sanctuary', sourceLabel:'Metaroad'}
+];
