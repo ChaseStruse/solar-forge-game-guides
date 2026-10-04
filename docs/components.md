@@ -41,7 +41,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 - `.text-link`: gold secondary link with optional decorative arrow. Links need useful visible names, not repeated “click here.”
 - `.game-card`: single clickable game directory card with `.game-art`, `.game-info`, `.game-card-top`, and `.tags`. Never nest interactive controls in the anchor. CSS art is decorative; the game name is real text.
 - `.hub-feature-grid`, `.hub-feature`: shared two-column Aion 2 hub entries for timers and classes, stacked on mobile. Keep each CTA as a real link.
-- `.classes-page`, `.role-nav`, `.class-group`, `.class-grid`, `.class-card`: responsive class overview with in-page role links and noninteractive class summaries. Two class columns on desktop, one on mobile. Each card includes a decorative monogram and a within-role index.
+- `.classes-page`, `.role-nav`, `.class-group`, `.class-grid`, `.class-card`: responsive class overview with in-page role links and noninteractive class summaries. Two class columns on desktop, one on mobile. Each card includes a locally hosted 150×150 WebP class icon and a within-role index. The icon has empty alt text because the adjacent H3 gives the class name.
 - `.timers-page`, `.timer-grid`, `.timer-card`, `.timer-clock`: timer page, responsive three/two/one-column card grid, informational event card, and fixed CST clock. Labels and schedules remain visible without JavaScript. Cards are not interactive.
 - `.topic-grid`: three columns on desktop, one on mobile. `.topic-card` is informational and must not look like an enabled tool.
 - `.breadcrumbs`: labeled navigation with slash separators; mark the current destination with `aria-current="page"`.

@@ -5,7 +5,7 @@ const classCount = classGroups.reduce((count, group) => count + group.classes.le
 
 function classCard(characterClass, index, groupCount) {
   return `<article class="class-card">
-    <div class="class-card-top"><span class="class-mark" aria-hidden="true">${escape(characterClass.mark)}</span><span class="class-index">${String(index + 1).padStart(2, '0')} / ${String(groupCount).padStart(2, '0')}</span></div>
+    <div class="class-card-top"><img class="class-icon" src="/assets/classes/${escape(characterClass.name.toLowerCase())}.webp" width="150" height="150" loading="lazy" decoding="async" alt=""><span class="class-index">${String(index + 1).padStart(2, '0')} / ${String(groupCount).padStart(2, '0')}</span></div>
     <h3>${escape(characterClass.name)}</h3><p>${escape(characterClass.description)}</p>
   </article>`;
 }
@@ -23,5 +23,5 @@ export const classesPage = () => layout({title:'Aion 2 Classes', description:'Ex
   <header class="classes-intro"><div><p class="eyebrow">AION 2 · YOUR ROLE IN THE PARTY</p><h1>Find Your <em>Class.</em></h1><p class="lead">Eight ways to enter the fight. Start with the role you want to play, then find the class that feels right.</p></div><div class="classes-at-a-glance" aria-label="Eight classes across three roles"><strong>${String(classCount).padStart(2, '0')}</strong><span>CLASSES</span><i aria-hidden="true"></i><strong>${String(classGroups.length).padStart(2, '0')}</strong><span>ROLES</span></div></header>
   <nav class="role-nav" aria-label="Jump to class role">${classGroups.map(group => `<a href="#${escape(group.id)}">${escape(group.title)} <span>${String(group.classes.length).padStart(2, '0')}</span></a>`).join('')}</nav>
   ${classGroups.map(roleSection).join('')}
-  <p class="class-source">Role grouping follows this guide’s party view. Class descriptions are adapted from the <a href="${escape(classSource)}">Aion 2 Wiki class overview ${arrow}</a>.</p>
+  <p class="class-source">Role grouping follows this guide’s party view. Class descriptions and icons are adapted from the <a href="${escape(classSource)}">Aion 2 Wiki class overview ${arrow}</a>.</p>
 </div>`});

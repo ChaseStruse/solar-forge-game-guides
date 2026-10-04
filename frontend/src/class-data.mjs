@@ -8,8 +8,8 @@ export const classGroups = [
     title: 'Tank',
     summary: 'Lead from the front and help your party stand its ground.',
     classes: [
-      {name: 'Gladiator', mark: 'GL', description: 'A heavy weapon melee fighter whose sweeping attacks bring damage to the front line.'},
-      {name: 'Templar', mark: 'TE', description: 'A defensive frontliner who holds enemy attention and uses control to protect the group.'}
+      {name: 'Gladiator', description: 'A heavy weapon melee fighter whose sweeping attacks bring damage to the front line.'},
+      {name: 'Templar', description: 'A defensive frontliner who holds enemy attention and uses control to protect the group.'}
     ]
   },
   {
@@ -17,10 +17,10 @@ export const classGroups = [
     title: 'DPS',
     summary: 'Bring the damage with close combat, ranged attacks, magic, or summons.',
     classes: [
-      {name: 'Elementalist', mark: 'EL', description: 'A summoner who commands elemental spirits to fight alongside the party.'},
-      {name: 'Assassin', mark: 'AS', description: 'A stealth-focused melee attacker built around quick bursts of damage.'},
-      {name: 'Ranger', mark: 'RA', description: 'A ranged bow user who adds traps to control the flow of a fight.'},
-      {name: 'Sorcerer', mark: 'SO', description: 'A ranged spellcaster who deals damage through elemental magic.'}
+      {name: 'Elementalist', description: 'A summoner who commands elemental spirits to fight alongside the party.'},
+      {name: 'Assassin', description: 'A stealth-focused melee attacker built around quick bursts of damage.'},
+      {name: 'Ranger', description: 'A ranged bow user who adds traps to control the flow of a fight.'},
+      {name: 'Sorcerer', description: 'A ranged spellcaster who deals damage through elemental magic.'}
     ]
   },
   {
@@ -28,8 +28,8 @@ export const classGroups = [
     title: 'Healer',
     summary: 'Keep allies ready for the next encounter with recovery and support.',
     classes: [
-      {name: 'Cleric', mark: 'CL', description: 'A healer who restores allies and backs them with protective magic.'},
-      {name: 'Chanter', mark: 'CH', description: 'A hybrid support healer who strengthens allies with buffs and recovery.'}
+      {name: 'Cleric', description: 'A healer who restores allies and backs them with protective magic.'},
+      {name: 'Chanter', description: 'A hybrid support healer who strengthens allies with buffs and recovery.'}
     ]
   }
 ];

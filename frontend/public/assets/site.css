@@ -1212,20 +1212,8 @@ details p {
   border-radius:var(--radius);
   background:var(--surface);
 }
-.class-card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:24px; }
-.class-mark {
-  display:grid;
-  place-items:center;
-  width:42px;
-  height:42px;
-  border:1px solid #66552c;
-  border-radius:4px;
-  color:var(--accent);
-  background:#17140c;
-  font-size:.66rem;
-  font-weight:700;
-  letter-spacing:.08em;
-}
+.class-card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:15px; }
+.class-icon { display:block; width:104px; height:104px; object-fit:contain; }
 .class-index { color:var(--muted); font-size:.58rem; letter-spacing:.13em; }
 .class-card h3 { margin-bottom:8px; }
 .class-card p { color:var(--muted); font-size:.83rem; max-width:440px; margin-bottom:0; }
