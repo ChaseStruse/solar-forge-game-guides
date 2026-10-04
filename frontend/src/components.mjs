@@ -9,6 +9,15 @@ export function topicCard({number, title, description}) {
 export function hubFeature({id, eyebrow, title, description, href, cta, nativeNavigation = false}) {
   return `<section class="hub-feature" aria-labelledby="${escape(id)}"><div><p class="eyebrow">${escape(eyebrow)}</p><h2 id="${escape(id)}">${escape(title)}</h2><p>${escape(description)}</p></div><a class="button" href="${escape(href)}"${nativeNavigation ? ' hx-boost="false"' : ''}>${escape(cta)} <span aria-hidden="true">↗</span></a></section>`;
 }
+export function aionNav(current) {
+  const links = [
+    ['Overview', '/games/aion-2/', 'overview', false],
+    ['Timers', '/games/aion-2/timers/', 'timers', true],
+    ['Classes', '/games/aion-2/classes/', 'classes', false],
+    ['Checklist', '/games/aion-2/checklist/', 'checklist', true]
+  ];
+  return `<nav class="game-nav" aria-label="Aion 2 sections">${links.map(([label, href, id, nativeNavigation]) => `<a href="${href}"${current === id ? ' aria-current="page"' : ''}${nativeNavigation ? ' hx-boost="false"' : ''}>${label}</a>`).join('')}</nav>`;
+}
 export function layout({title, description, content, current = '', noindex = false, scripts = []}) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escape(description)}">${noindex ? '<meta name="robots" content="noindex">' : ''}<meta name="theme-color" content="#000000"><title>${escape(title)} · Solar Forge Game Guides</title><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/htmx.min.js" defer></script></head>

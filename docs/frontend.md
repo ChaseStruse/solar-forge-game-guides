@@ -10,6 +10,9 @@
 - `frontend/src/timers-page.mjs`: static timer page and readable CST schedules.
 - `frontend/src/class-data.mjs`: eight class descriptions and owner-specified role grouping.
 - `frontend/src/classes-page.mjs`: static class overview using the shared layout and section headings.
+- `frontend/src/checklist-data.mjs`: owner-supplied checklist order, priorities, and estimates with researched activity summaries and sources.
+- `frontend/src/checklist-page.mjs`: static Aion 2 checklist markup.
+- `frontend/public/assets/checklist.js`: local browser persistence, progress count, and manual clearing.
 - `frontend/public/assets/htmx.min.js`: pinned, self-hosted HTMX 4.0.0 runtime; license beside it.
 - `frontend/public/_headers`: Cloudflare response headers, including content security policy.
 - `frontend/build.mjs`: dependency-free Node static build. `frontend/dist/` is disposable output.
@@ -24,13 +27,13 @@ npm run build      # Rebuild after source edits; no automatic watcher
 npm run check      # Build and verify links, assets, fragment targets, and structure
 ```
 
-Routes: `/`, `/games/aion-2/`, `/preview/guide/`, `/games/aion-2/timers/`, `/games/aion-2/classes/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
+Routes: `/`, `/games/aion-2/`, `/preview/guide/`, `/games/aion-2/timers/`, `/games/aion-2/classes/`, `/games/aion-2/checklist/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
 
 ## Rendering and HTMX
 
 HTMX 4 enhances same-origin anchors via `hx-boost:inherited="true"` on the body. Full static documents are served for both ordinary and boosted requests; no fragments API, backend, or client router is needed. Browser history and title updates are handled by HTMX. Native anchor links and `details` handle in-page navigation and disclosures.
 
-The browser runs the vendored HTMX runtime on all pages. The timers page also loads a small native module to tick countdowns once a second; HTMX handles navigation, while native JavaScript handles clock math. Build scripts are Node JavaScript and do not ship to the browser. All pages remain usable without JavaScript. Future search, party tools, or mutations need real endpoints and a separate scope; do not add pretend controls.
+The browser runs the vendored HTMX runtime on all pages. The timers page loads a small native module to tick countdowns once a second. The checklist page loads a small native module to store checkbox state in `localStorage`. Script-driven pages use native link navigation so their modules initialize reliably. Build scripts are Node JavaScript and do not ship to the browser. Static content and native checkboxes remain usable without JavaScript. Future search, party tools, or mutations need real endpoints and a separate scope; do not add pretend controls.
 
 HTMX 4 uses explicit inheritance. Reference [HTMX 4 docs](https://four.htmx.org/docs) before implementing new interactions. The minified runtime comes from `https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.min.js`. Preserve its license; pin and review upgrades. No CDN request happens during a visitor's session.
 
@@ -40,11 +43,13 @@ The CSP allows inline styles for HTMX style insertion, but restricts scripts to 
 
 **Home:** shared header → hero → principles → game directory → planned coverage → closing note → shared footer.
 
-**Game hub:** breadcrumbs → game identity and honest status → coverage cards → next action. Publish verified guide links here as they become available; replace planned cards when warranted.
+**Game hub:** breadcrumbs → section navigation → game identity and honest status → coverage cards → next action. Publish verified guide links here as they become available; replace planned cards when warranted.
 
 **Timers:** read [Aion 2 timers](timers.md) before changing schedules or labels. The Aion 2 hub links to the static timers route with native navigation so the page module initializes reliably. Show fixed CST (UTC−6) explicitly; countdowns depend on the visitor device clock. Keep all nine static schedules readable when scripts are disabled.
 
 **Classes:** read [Aion 2 classes](classes.md) for content provenance and role ordering. The page uses shared layout and headings, class data from one module, responsive cards, and native role anchors. Keep the source link visible.
+
+**Checklist:** read [Aion 2 checklist](checklist.md) for screenshot provenance and activity sources. Keep the original fifteen-item order, priority, and time estimates. Browser progress is local to the current origin, and users clear it manually. Do not infer a reset time from the page title. The page uses the shared Aion section navigation, responsive rows, visible source links, native checkboxes, and a small page module.
 
 **Guide:** use `guideLayout()` and the preview route. Breadcrumbs, category, one H1, short summary, verified patch/region/review metadata, sticky desktop contents, article sections, sources and change notes. Mobile contents stay in normal flow. Match section IDs and contents anchors. The current helper always adds noindex for template safety; introduce an explicit publication option when real guides are added.
 

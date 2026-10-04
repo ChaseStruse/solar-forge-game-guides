@@ -16,6 +16,7 @@ Open **http://localhost:4321**. Edit `frontend/`, then run `npm run build` and r
 - `/games/aion-2/` — Aion 2 landing page
 - `/games/aion-2/timers/` — live event countdowns in fixed CST (UTC−6)
 - `/games/aion-2/classes/` — eight classes grouped by Tank, DPS, and Healer
+- `/games/aion-2/checklist/` — fifteen weekly priorities with browser-saved progress
 - `/preview/guide/` — reusable guide layout example (not indexed)
 
 ## Build and verify
@@ -31,4 +32,4 @@ Static output goes to `frontend/dist/`. Shared Node renderers eliminate repeated
 
 Framework: **None**. Repository root: **root**. Build command: **`npm run build`**. Output: **`frontend/dist`**. Node: **22+**. Deployment is not performed automatically by this repository.
 
-Read [class source and grouping](docs/classes.md) and [timer schedules](docs/timers.md) for content details. Read [frontend architecture](docs/frontend.md) for workflow and hosting, [reusable components](docs/components.md) for styling and composition, and [AGENTS.md](AGENTS.md) for future-model instructions.
+Read [class source and grouping](docs/classes.md), [timer schedules](docs/timers.md), and [checklist sources](docs/checklist.md) for content details. Read [frontend architecture](docs/frontend.md) for workflow and hosting, [reusable components](docs/components.md) for styling and composition, and [AGENTS.md](AGENTS.md) for future-model instructions.

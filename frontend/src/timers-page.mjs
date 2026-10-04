@@ -1,4 +1,4 @@
-import {layout, escape, sectionHeading} from './components.mjs';
+import {layout, escape, sectionHeading, aionNav} from './components.mjs';
 import {events, serverTimeToCstLabel} from '../public/assets/timer-schedule.js';
 
 const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -31,6 +31,7 @@ function eventCard(event) {
 
 export const timersPage = () => layout({title:'Aion 2 Timers', description:'Live countdowns to the next Aion 2 events, rifts, world bosses, and abyss sieges, shown in fixed CST (UTC−6).', scripts:['/assets/timers.js'], content:`
 <div class="container timers-page"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">The Forge</a><span>/</span><a href="/games/aion-2/">Aion 2</a><span>/</span><span aria-current="page">Timers</span></nav>
+${aionNav('timers')}
 <header class="timers-intro"><div><p class="eyebrow">AION 2 · LIVE SCHEDULE</p><h1>Event <em>Timers.</em></h1><p class="lead">Know what’s next. Plan your run around events, rifts, world bosses, and sieges.</p></div><div class="timer-clock"><span class="timer-label">CURRENT TIME · CST (UTC−6)</span><strong data-cst-clock>—</strong><span>Fixed Central Standard Time</span></div></header>
 <div class="timer-notice"><span aria-hidden="true">✦</span><p>Schedules are shown in <strong>fixed CST (UTC−6)</strong>, converted from server time (UTC+9). Countdowns use your device clock. <span data-clock-status>Enable JavaScript for live countdowns; the schedules below remain available.</span></p></div>
 <section class="section timer-section" id="timers">${sectionHeading('UPCOMING ACTIVITIES', 'Keep Every Event In Sight.', 'Nine event schedules, organized by activity. Each countdown updates once a second.')}<div class="timer-grid">${events.map(eventCard).join('')}</div></section>
