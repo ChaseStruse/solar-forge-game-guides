@@ -28,7 +28,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 | Status badge | Aion 2 hub | `.badge` is informational; status must be stated in text. |
 | Hub feature | Aion 2 hub | `.hub-feature` with H2, summary, and a real CTA link. Set `hx-boost="false"` when the destination requires a page script. |
 | Aion section tabs | Any Aion 2 page | `.game-nav` contains Overview, Timers, Classes, and Checklist. Mark exactly one link `aria-current="page"`. |
-| Planned topic card | Home and Aion hub | `.topic-card` is noninteractive and explicitly labeled as planned coverage. |
+| Planned topic card | Aion 2 hub | `.topic-card` is noninteractive and explicitly labeled as planned coverage. |
 | Guide layout | `frontend/preview/guide/index.html` | Breadcrumbs, category, one H1, summary, contents links, readable article, source notes. Remove noindex only for a verified published guide. |
 
 ## CSS and markup patterns
@@ -46,7 +46,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 - `.timers-page`, `.timer-grid`, `.timer-card`, `.timer-clock`: timer page, responsive three/two/one-column card grid, informational event card, and fixed CST clock. Labels and schedules remain visible without JavaScript. Cards are not interactive.
 - `.topic-grid`: three columns on desktop, one on mobile. `.topic-card` is informational and must not look like an enabled tool.
 - `.breadcrumbs`: labeled navigation with slash separators; mark the current destination with `aria-current="page"`.
-- `.status-panel`, `.forge-note`: status and follow-on navigation with one clear action.
+- `.status-panel`: status and follow-on navigation with one clear action on the Aion 2 hub.
 - `.guide-layout`, `.toc`, `.guide-content`: desktop sidebar and readable article column, stacked below 700px.
 - `.callout`: important contextual note with a gold border. Critical requirements should remain visible.
 - `.table-scroll`: focusable horizontal scrolling region around a semantic table. Supply region label, caption, and column headers.

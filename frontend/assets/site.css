@@ -504,10 +504,6 @@ main:focus {
   color:var(--accent);
   font-size:1.2rem;
 }
-.about-section {
-  background:#050505;
-  border-block:1px solid var(--line);
-}
 .topic-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -540,33 +536,10 @@ main:focus {
   letter-spacing:.13em;
   color:var(--muted);
 }
-.forge-note {
-  display:flex;
-  gap:25px;
-  align-items:center;
-  padding-block:65px;
-}
 .note-mark {
   font-size:45px;
   color:var(--accent);
   flex-shrink:0;
-}
-.forge-note h2 {
-  font-size:1.55rem;
-  margin-bottom:12px;
-}
-.forge-note .eyebrow {
-  font-size:.56rem;
-  margin-bottom:12px;
-}
-.forge-note p:last-child {
-  color:var(--muted);
-  font-size:.8rem;
-  margin-bottom:0;
-}
-.forge-note>.text-link {
-  margin-left:auto;
-  white-space:nowrap;
 }
 .site-footer {
   border-top:1px solid var(--line);
@@ -842,12 +815,6 @@ details p {
   .section-heading>p {
     max-width:210px;
   }
-  .forge-note {
-    flex-wrap:wrap;
-  }
-  .forge-note>.text-link {
-    margin-left:70px;
-  }
   .status-panel {
     flex-wrap:wrap;
   }
@@ -992,21 +959,6 @@ details p {
   }
   .topic-card p {
     max-width:none;
-  }
-  .forge-note {
-    align-items:flex-start;
-    padding-block:42px;
-    gap:18px;
-  }
-  .forge-note>div {
-    flex:1;
-    min-width:220px;
-  }
-  .forge-note h2 {
-    font-size:1.35rem;
-  }
-  .forge-note>.text-link {
-    margin-left:0;
   }
   .note-mark {
     font-size:34px;

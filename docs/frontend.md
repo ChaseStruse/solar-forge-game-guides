@@ -41,7 +41,7 @@ The content security policy in `_headers` restricts scripts to local files. Avoi
 
 ## Page Recipes
 
-**Home:** shared header → hero → principles → game directory → planned coverage → closing note → shared footer.
+**Home:** shared header → hero → principles → game directory → shared footer. The game directory is the last main-content section.
 
 **Game hub:** breadcrumbs → section navigation → game identity → coverage cards → next action.
 
