@@ -1,5 +1,5 @@
 import {layout, escape, sectionHeading} from './components.mjs';
-import {events, serverTimeToCstLabel} from '../public/assets/timer-schedule.mjs';
+import {events, serverTimeToCstLabel} from '../public/assets/timer-schedule.js';
 
 const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const clock = (hour, minute) => `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
@@ -25,13 +25,13 @@ function eventCard(event) {
     <div class="timer-card-head"><span class="timer-category">${escape(event.category)}</span><span class="timer-pulse" aria-hidden="true"></span></div>
     <h3>${escape(event.name)}</h3>
     <p class="timer-schedule">${escape(cstSchedule(event))} <span>CST</span></p>
-    <div class="timer-result"><div><span class="timer-label">NEXT IN</span><strong class="timer-countdown" data-countdown>—</strong></div><div><span class="timer-label">NEXT START</span><time data-next-start>Loading…</time></div></div>
+    <div class="timer-result"><div><span class="timer-label">NEXT IN</span><strong class="timer-countdown" data-countdown>—</strong></div><div><span class="timer-label">NEXT START</span><time data-next-start>See CST schedule above</time></div></div>
   </article>`;
 }
 
-export const timersPage = () => layout({title:'Aion 2 Timers', description:'Live countdowns to the next Aion 2 events, rifts, world bosses, and abyss sieges, shown in fixed CST (UTC−6).', scripts:['/assets/timers.mjs'], content:`
+export const timersPage = () => layout({title:'Aion 2 Timers', description:'Live countdowns to the next Aion 2 events, rifts, world bosses, and abyss sieges, shown in fixed CST (UTC−6).', scripts:['/assets/timers.js'], content:`
 <div class="container timers-page"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">The Forge</a><span>/</span><a href="/games/aion-2/">Aion 2</a><span>/</span><span aria-current="page">Timers</span></nav>
 <header class="timers-intro"><div><p class="eyebrow">AION 2 · LIVE SCHEDULE</p><h1>Event <em>timers.</em></h1><p class="lead">Know what’s next. Plan your run around events, rifts, world bosses, and sieges.</p></div><div class="timer-clock"><span class="timer-label">CURRENT TIME · CST (UTC−6)</span><strong data-cst-clock>—</strong><span>Fixed Central Standard Time</span></div></header>
 <div class="timer-notice"><span aria-hidden="true">✦</span><p>Schedules are shown in <strong>fixed CST (UTC−6)</strong>, converted from server time (UTC+9). Countdowns use your device clock. <span data-clock-status>Enable JavaScript for live countdowns; the schedules below remain available.</span></p></div>
-<section class="section timer-section" id="timers">${sectionHeading('UPCOMING ACTIVITIES', 'The next thing worth watching.', 'Nine event schedules, organized by activity. Each countdown updates once a second.')}<div class="timer-grid">${events.map(eventCard).join('')}</div></section>
+<section class="section timer-section" id="timers">${sectionHeading('UPCOMING ACTIVITIES', 'Keep every event in sight.', 'Nine event schedules, organized by activity. Each countdown updates once a second.')}<div class="timer-grid">${events.map(eventCard).join('')}</div></section>
 <p class="timer-footnote">Times follow the schedules provided for this guide. If an in-game schedule changes, the game’s event calendar takes precedence.</p></div>`});

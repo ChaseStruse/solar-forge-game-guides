@@ -5,6 +5,9 @@
 - `frontend/src/components.mjs`: shared page shell, section heading, badge, topic card, guide layout, escaping.
 - `frontend/src/pages.mjs`: author-written home, Aion 2 hub, guide preview, and 404 content.
 - `frontend/public/assets/site.css`: design tokens, components, responsive rules, CSS illustrations.
+- `frontend/public/assets/timer-schedule.js`: canonical owner-supplied server-time recurrences and pure next-occurrence calculation.
+- `frontend/public/assets/timers.js`: one-second client countdown and fixed CST clock, loaded only on the timer page.
+- `frontend/src/timers-page.mjs`: static timer page and readable CST schedules.
 - `frontend/public/assets/htmx.min.js`: pinned, self-hosted HTMX 4.0.0 runtime; license beside it.
 - `frontend/public/_headers`: Cloudflare response headers, including content security policy.
 - `frontend/build.mjs`: dependency-free Node static build. `frontend/dist/` is disposable output.
@@ -19,13 +22,13 @@ npm run build      # Rebuild after source edits; no automatic watcher
 npm run check      # Build and verify links, assets, fragment targets, and structure
 ```
 
-Routes: `/`, `/games/aion-2/`, `/preview/guide/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
+Routes: `/`, `/games/aion-2/`, `/preview/guide/`, `/games/aion-2/timers/`, and `/404.html`. The preview is excluded from indexing via robots metadata and robots.txt; it is deliberately absent from visitor navigation.
 
 ## Rendering and HTMX
 
 HTMX 4 enhances same-origin anchors via `hx-boost:inherited="true"` on the body. Full static documents are served for both ordinary and boosted requests; no fragments API, backend, or client router is needed. Browser history and title updates are handled by HTMX. Native anchor links and `details` handle in-page navigation and disclosures.
 
-The only browser JavaScript is the vendored HTMX runtime. Build scripts are Node JavaScript and do not ship to the browser. All pages remain usable without JavaScript. Future search, party tools, or mutations need real endpoints and a separate scope; do not add pretend controls.
+The browser runs the vendored HTMX runtime on all pages. The timers page also loads a small native module to tick countdowns once a second; HTMX handles navigation, while native JavaScript handles clock math. Build scripts are Node JavaScript and do not ship to the browser. All pages remain usable without JavaScript. Future search, party tools, or mutations need real endpoints and a separate scope; do not add pretend controls.
 
 HTMX 4 uses explicit inheritance. Reference [HTMX 4 docs](https://four.htmx.org/docs) before implementing new interactions. The minified runtime comes from `https://cdn.jsdelivr.net/npm/htmx.org@4.0.0/dist/htmx.min.js`. Preserve its license; pin and review upgrades. No CDN request happens during a visitor's session.
 
@@ -36,6 +39,8 @@ The CSP allows inline styles for HTMX style insertion, but restricts scripts to 
 **Home:** shared header → hero → principles → game directory → planned coverage → closing note → shared footer.
 
 **Game hub:** breadcrumbs → game identity and honest status → coverage cards → next action. Publish verified guide links here as they become available; replace planned cards when warranted.
+
+**Timers:** read [Aion 2 timers](timers.md) before changing schedules or labels. The Aion 2 hub links to the static timers route with native navigation so the page module initializes reliably. Show fixed CST (UTC−6) explicitly; countdowns depend on the visitor device clock. Keep all nine static schedules readable when scripts are disabled.
 
 **Guide:** use `guideLayout()` and the preview route. Breadcrumbs, category, one H1, short summary, verified patch/region/review metadata, sticky desktop contents, article sections, sources and change notes. Mobile contents stay in normal flow. Match section IDs and contents anchors. The current helper always adds noindex for template safety; introduce an explicit publication option when real guides are added.
 
@@ -49,7 +54,7 @@ See [Cloudflare static HTML deployment](https://developers.cloudflare.com/pages/
 
 ## Validation before committing
 
-Run `npm run check`. Inspect `/`, `/games/aion-2/`, and `/preview/guide/` at 320, 390, 768, and 1440 CSS pixels. Verify no horizontal overflow, readable contrast, visible focus, skip link, table scrolling, and native disclosures. Test boosted navigation, browser Back/Forward, and navigation with JavaScript disabled. Check the browser console and missing asset responses.
+Run `npm run check` (includes timer recurrence tests). Inspect `/`, `/games/aion-2/`, and `/preview/guide/` at 320, 390, 768, and 1440 CSS pixels. Verify no horizontal overflow, readable contrast, visible focus, skip link, table scrolling, and native disclosures. Test boosted navigation, browser Back/Forward, and navigation with JavaScript disabled. Check the browser console and missing asset responses.
 
 Commit early, commit often. Document each shared component and behavior when it changes. Follow DRY principles and update the existing component before adding another implementation.
 

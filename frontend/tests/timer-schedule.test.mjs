@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {events, nextOccurrence, serverTimeToCstLabel} from '../public/assets/timer-schedule.mjs';
+import {events, nextOccurrence, serverTimeToCstLabel} from '../public/assets/timer-schedule.js';
 
 const event = id => events.find(item => item.id === id);
 const nextIso = (id, now) => new Date(nextOccurrence(event(id), Date.parse(now))).toISOString();

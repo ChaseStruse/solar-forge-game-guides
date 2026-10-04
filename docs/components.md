@@ -23,7 +23,7 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 
 | Component | Input | Contract |
 | --- | --- | --- |
-| `layout` | `{title, description, content, current?, noindex?}` | Full HTML document, metadata, skip link, header, footer, CSS, HTMX. `current: 'home'` marks the home link. `content` is trusted HTML. |
+| `layout` | `{title, description, content, current?, noindex?, scripts?}` | Full HTML document, metadata, skip link, header, footer, CSS, HTMX. `current: 'home'` marks the home link. `content` is trusted HTML; `scripts` lists local module URLs for page-specific behavior. |
 | `sectionHeading` | `(eyebrow, title, detail?)` | H2 heading and optional supporting copy; stacks on mobile. Inputs are escaped. |
 | `badge` | `(label)` | Noninteractive status, with decorative star. Never convey status by color alone. |
 | `topicCard` | `{number, title, description}` | Noninteractive article for planned coverage. Includes explicit planned label. Do not use for published guides. |
@@ -39,6 +39,8 @@ Use system Arial/Helvetica for UI and Georgia for editorial italic emphasis. No 
 - `.button`: primary navigation CTA. Use an anchor for navigation and a real button for actions. `.button-secondary` is outlined. Minimum height is 48px.
 - `.text-link`: gold secondary link with optional decorative arrow. Links need useful visible names, not repeated “click here.”
 - `.game-card`: single clickable game directory card with `.game-art`, `.game-info`, `.game-card-top`, and `.tags`. Never nest interactive controls in the anchor. CSS art is decorative; the game name is real text.
+- `.timers-feature`: a linked utility entry on the Aion 2 hub. Keep its CTA as a real link.
+- `.timers-page`, `.timer-grid`, `.timer-card`, `.timer-clock`: timer page, responsive three/two/one-column card grid, informational event card, and fixed CST clock. Labels and schedules remain visible without JavaScript. Cards are not interactive.
 - `.topic-grid`: three columns on desktop, one on mobile. `.topic-card` is informational and must not look like an enabled tool.
 - `.breadcrumbs`: labeled navigation with slash separators; mark the current destination with `aria-current="page"`.
 - `.status-panel`, `.forge-note`: status and follow-on navigation with one clear action.

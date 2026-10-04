@@ -1,4 +1,4 @@
-import {events, nextOccurrence, CST_UTC_OFFSET_HOURS} from './timer-schedule.mjs';
+import {events, nextOccurrence, CST_UTC_OFFSET_HOURS} from './timer-schedule.js';
 
 const eventById = new Map(events.map(event => [event.id, event]));
 const cards = [...document.querySelectorAll('[data-timer-id]')].map(element => ({
@@ -44,6 +44,14 @@ function update() {
 if (cards.length && clock && status) {
   status.textContent = 'Countdowns refresh every second.';
   update();
-  setInterval(update, 1000);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) update(); });
+  const onVisibilityChange = () => { if (!document.hidden && clock.isConnected) update(); };
+  document.addEventListener('visibilitychange', onVisibilityChange);
+  const ticker = setInterval(() => {
+    if (!clock.isConnected) {
+      clearInterval(ticker);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      return;
+    }
+    update();
+  }, 1000);
 }
